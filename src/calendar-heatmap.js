@@ -46,6 +46,12 @@ function calendarHeatmap() {
     return chart;
   };
 
+  chart.square_length = function (value) {
+    if (!arguments.length) { return square_length; }
+    square_length = value;
+    return chart;
+  };
+
   chart.max = function (value) {
     if (!arguments.length) { return max; }
     max = value;
