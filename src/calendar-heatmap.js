@@ -48,7 +48,7 @@ function calendarHeatmap() {
 
   chart.squareLength = function (value) {
     if (!arguments.length) { return square_length; }
-    square_length = value;
+    SQUARE_LENGTH = value;
     return chart;
   };
 
