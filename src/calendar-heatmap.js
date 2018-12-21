@@ -52,6 +52,12 @@ function calendarHeatmap() {
     return chart;
   };
 
+  chart.weekStart = function (value) {
+    if (!arguments.length) { return square_length; }
+    weekStart = value;
+    return chart;
+  };
+
   chart.max = function (value) {
     if (!arguments.length) { return max; }
     max = value;
