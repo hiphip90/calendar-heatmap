@@ -134,7 +134,10 @@ function calendarHeatmap() {
       var svg = d3.select(chart.selector())
         .style('position', 'relative')
         .append('svg')
-        .attr('width', width)
+        .attr('width', function(d, i) {
+          number_of_columns = firstDate.week() - moment(new Date()).week()
+          return number_of_columns * (SQUARE_LENGTH + SQUARE_PADDING);
+        })
         .attr('class', 'calendar-heatmap')
         .attr('height', height)
         .style('padding', '36px');
