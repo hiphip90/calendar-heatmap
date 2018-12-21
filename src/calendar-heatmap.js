@@ -17,6 +17,7 @@ function calendarHeatmap() {
   var colorRange = ['#D8E6E7', '#218380'];
   var tooltipEnabled = true;
   var tooltipUnit = 'contribution';
+  var tooltipMode = 'percent' // or 'units'
   var legendEnabled = true;
   var onClick = null;
   var weekStart = 0; //0 for Sunday, 1 for Monday
@@ -92,6 +93,12 @@ function calendarHeatmap() {
   chart.tooltipUnit = function (value) {
     if (!arguments.length) { return tooltipUnit; }
     tooltipUnit = value;
+    return chart;
+  };
+
+  chart.tooltipMode = function (value) {
+    if (!arguments.length) { return tooltipUnit; }
+    tooltipMode = value;
     return chart;
   };
 
@@ -266,7 +273,13 @@ function calendarHeatmap() {
     function tooltipHTMLForDate(d) {
       var dateStr = moment(d).format('ddd, MMM Do YYYY');
       var count = countForDate(d);
-      return '<span><strong>' + (count ? count : locale.No) + ' ' + pluralizedTooltipUnit(count) + '</strong> ' + locale.on + ' ' + dateStr + '</span>';
+      if (tooltipMode === 'percent') {
+        percentage = parseFloat(count) * 100
+        return '<span><strong>' + percentage + '% ' + tooltipUnit + '</strong> ' + locale.on + ' ' + dateStr + '</span>';
+      }
+      else if (tooltipMode === 'units') {
+        return '<span><strong>' + (count ? count : locale.No) + ' ' + pluralizedTooltipUnit(count) + '</strong> ' + locale.on + ' ' + dateStr + '</span>';
+      }
     }
 
     function countForDate(d) {
