@@ -185,8 +185,8 @@ function calendarHeatmap() {
             .attr('class', 'day-cell-tooltip')
             .html(tooltipHTMLForDate(d))
             .style('left', function () { return Math.floor(i / 7) * SQUARE_LENGTH + 'px'; })
-            .style('top', function () {
-              return formatWeekday(d.getDay()) * (SQUARE_LENGTH + SQUARE_PADDING) + MONTH_LABEL_PADDING * 2 + 'px';
+            .style('bottom', function () {
+              return (6 - formatWeekday(d.getDay())) * (SQUARE_LENGTH + SQUARE_PADDING) + MONTH_LABEL_PADDING * 2 + 'px';
             });
         })
         .on('mouseout', function (d, i) {
