@@ -135,8 +135,7 @@ function calendarHeatmap() {
         .style('position', 'relative')
         .append('svg')
         .attr('width', function(d, i) {
-          number_of_columns = moment(new Date()).week() - firstDate.week();
-          return number_of_columns * (SQUARE_LENGTH + SQUARE_PADDING);
+          return 52 * (SQUARE_LENGTH + SQUARE_PADDING);
         })
         .attr('class', 'calendar-heatmap')
         .attr('height', height)
