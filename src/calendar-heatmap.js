@@ -150,7 +150,7 @@ function calendarHeatmap() {
         .attr('width', function(d, i) {
           return 52 * (SQUARE_LENGTH + SQUARE_PADDING);
         })
-        .attr('class', 'calendar-heatmep')
+        .attr('class', 'calendar-heatmap')
         .attr('height', function(d, i) {
           return 7 * (SQUARE_LENGTH + SQUARE_PADDING);
         })
