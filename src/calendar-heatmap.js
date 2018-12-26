@@ -8,6 +8,7 @@ function calendarHeatmap() {
   var SQUARE_LENGTH = 11;
   var SQUARE_PADDING = 2;
   var MONTH_LABEL_PADDING = 6;
+  var SVG_PADDING=36;
   var now = moment().endOf('day').toDate();
   var yearAgo = moment().startOf('day').subtract(1, 'year').toDate();
   var startDate = moment().startOf('day').subtract(1, 'year').toDate();
@@ -151,10 +152,8 @@ function calendarHeatmap() {
           return 52 * (SQUARE_LENGTH + SQUARE_PADDING);
         })
         .attr('class', 'calendar-heatmap')
-        .attr('height', function(d, i) {
-          return 7 * (SQUARE_LENGTH + SQUARE_PADDING);
-        })
-        .style('padding', '36px');
+        .attr('height', 'auto')
+        .style('padding', SVG_PADDING + 'px');
 
       dayRects = svg.selectAll('.day-cell')
         .data(dateRange);  //  array of days for the last yr
@@ -188,7 +187,7 @@ function calendarHeatmap() {
             .html(tooltipHTMLForDate(d))
             .style('left', function () { return Math.floor(i / 7) * SQUARE_LENGTH + 'px'; })
             .style('bottom', function () {
-              return (6 - formatWeekday(d.getDay())) * (SQUARE_LENGTH + SQUARE_PADDING) + MONTH_LABEL_PADDING * 2 + 'px';
+              return (6 - formatWeekday(d.getDay())) * (SQUARE_LENGTH + SQUARE_PADDING) + MONTH_LABEL_PADDING * 2 + SVG_PADDING + 'px';
             });
         })
         .on('mouseout', function (d, i) {
