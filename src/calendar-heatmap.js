@@ -150,10 +150,10 @@ function calendarHeatmap() {
         .attr('width', function(d, i) {
           return 52 * (SQUARE_LENGTH + SQUARE_PADDING);
         })
-        .attr('class', function(d, i) {
+        .attr('class', 'calendar-heatmep')
+        .attr('height', function(d, i) {
           return 7 * (SQUARE_LENGTH + SQUARE_PADDING);
         })
-        .attr('height', height)
         .style('padding', '36px');
 
       dayRects = svg.selectAll('.day-cell')
