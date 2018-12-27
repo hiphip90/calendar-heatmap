@@ -185,7 +185,7 @@ function calendarHeatmap() {
             .append('div')
             .attr('class', 'day-cell-tooltip')
             .html(tooltipHTMLForDate(d))
-            .style('left', function () { return -60 + Math.floor(i / 7) * SQUARE_LENGTH + 'px'; })
+            .style('left', function () { return -60 + Math.floor(i / 7) * (SQUARE_LENGTH + SQUARE_PADDING)+ 'px'; })
             .style('bottom', function () {
               var distance_from_bottom_rect = (6 - formatWeekday(d.getDay())) * (SQUARE_LENGTH + SQUARE_PADDING)
               var extra_padding = SQUARE_PADDING + MONTH_LABEL_PADDING * 2 + SVG_PADDING
